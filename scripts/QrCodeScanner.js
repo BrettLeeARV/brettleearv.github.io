@@ -44,7 +44,7 @@ function initAvaliableCameras(selectObject, callBack) {
 
         for (var i = 0; i < cameras.length; i++) {
             var o = jQuery("<option value='" + i + "'></option>");
-            o.text("Camera#" + i);
+            o.text("Camera #" + i);
             o.appendTo(selectObject);
             max = i;
         }
@@ -53,8 +53,6 @@ function initAvaliableCameras(selectObject, callBack) {
         selectObject.val(max);
 
         callBack();
-
-        console.log("in Instascan.Camera.getCameras()");
     });
 }
 
@@ -70,6 +68,12 @@ function initCamera(i) {
     Instascan.Camera.getCameras().then(function (cameras) {
         scanner.start(cameras[i]);
     });
+
+    //If front camera selected, turn on mirror mode
+    if (i === 0)
+        scanner.mirror = true;
+    else
+        scanner.mirror = false;
 }
 
 function scanStart(ondetect){
