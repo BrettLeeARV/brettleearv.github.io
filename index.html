@@ -11,7 +11,7 @@
 </head>
 <body>
     <!--Camera Dropdown-->
-    <div>
+    <div id="CameraOptions" style="display: none;">
         <label for="ddlCameras">Choose camera:</label>
         <select id="ddlCameras" onchange="cameraChange(this);"></select>
     </div>
@@ -46,18 +46,20 @@
     //Populate available cameras into dropdown and start rear most camera (selected will always be the last item in dropdown)
     initAvaliableCameras(
         ddlCameras,
-        function () {
+        function () {            
             cameraId = parseInt(getSelectedCamera(ddlCameras));
             initCamera(cameraId);
+            //Show camera option dropdown if more than 2 cameras are detected
+            if (ddlCameras.length > 1){
+                jqueryspf("#CameraOptions").show();
+            }
         }
     );
 
     //Handle Scan result event
-    scanStart(function (content) {
-        
+    scanStart(function (content) {        
         alert(content);
         var contentArray = content.toString().split('_');
-
         if (typeof contentArray !== 'undefined' && contentArray.length === 3){
             processQRContentArray(contentArray);
         }
@@ -86,6 +88,5 @@
             }
         }
     }
-    
 </script>
 </html>

@@ -62,11 +62,11 @@ function getSelectedCamera(selectObject) {
 }
 
 //Init camera
-function initCamera(i) {
+function initCamera(i) {    
     scanner.stop();
-
     Instascan.Camera.getCameras().then(function (cameras) {
         scanner.start(cameras[i]);
+        console.log("Started Camera - '" + cameras[i].name + "', ID - '" + cameras[i].id) + "'";
     });
 
     //If front camera selected, turn on mirror mode
