@@ -85,7 +85,7 @@ function scanStart(ondetect){
 
 //change camera
 function cameraChange(cameraNum) {
-    initCamera(parseInt(cameraNum));
+    initCamera(parseInt(jQuery(cameraNum).val()));
 }
 
 //init QrCode scanner
