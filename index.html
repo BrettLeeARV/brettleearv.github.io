@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>Instascan Test</title>
 </head>
 <body>
@@ -37,8 +40,10 @@
     var options = initVideoObjectOptions("scanView");
     var cameraId = 0;
 
+    //Pass option and initialize Instascan
     initScanner(options);
 
+    //Populate available cameras into dropdown and start rear most camera (selected will always be the last item in dropdown)
     initAvaliableCameras(
         webcameraChanger,
         function () {
@@ -47,7 +52,9 @@
         }
     );
 
+    //Handle Scan result event
     scanStart(function (content) {
+        
         alert(content);
 
         //convert QR to string - format: Location_Facility_App
@@ -60,7 +67,7 @@
 
         //console.log(contentArray);
 
-        //check if BOOKING-APP key word is detected in qr
+        //Check if BOOKING-APP key word is detected in qr (NOT THE MOST SECURE)
         if (keyword == "BOOKING-APP") {
 
             //encrypt facility, location, date and time elements concatenate and send as parameter                
