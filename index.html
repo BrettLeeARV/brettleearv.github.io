@@ -69,29 +69,48 @@
     
     //start camera
     Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
+        var cameraStatusString = "";
+        var scanViewDisplay = "";
 
+        if (cameras.length > 0) {
             //if any camera is detected show stream
+            scanViewDisplay = "block";
             document.getElementById('scanView').style.display = "block";
 
-            //check if there are more than 1 cameras 
-            //e.g. cameras[0] = user self portrait camera
-            if(cameras.length == 1){
-                console.log("front camera: " + cameras[0].name + " : " + cameras[0].id);
+            //check if there are more than 1 cameras             
+            if(cameras.length === 1){
+                
+                //e.g. cameras[0] = user self portrait camera
+                var camera = cameras[0];
+
+                cameraStatusString = "Front camera: " + camera.name + " : " + camera.id;
+                
+                //Turn mirror mode ON for Front facing camera
                 scanner.mirror = true;
-                scanner.start(cameras[0]);
+                scanner.start(camera);
+                
             }
-            else if (cameras.length > 1) {//if more than 1 device get the back camera, cameras[1] = rear or enviroment camera, 
-                console.log("Back camera: " + cameras[cameras.length - 1].name + " : " + cameras[cameras.length - 1].id);
+            else if (cameras.length > 1) {
+                
+                //if more than 1 device get the back camera, cameras[1] = rear or enviroment camera, 
+                var camera = cameras[cameras.length - 1];
+
+                cameraStatusString = "Rear camera: " + camera.name + " : " + camera.id;
+
+                //Turn mirror mode OFF for Rear facing camera
                 scanner.mirror = false;
-                scanner.start(cameras[cameras.length - 1]);
-            }            
-            document.getElementById('cameraStatus').innerHTML = '';
+                scanner.start(camera);
+            }
+
         } else {
             console.error('No cameras found.');
-            document.getElementById('scanView').style.display = "none";
-            document.getElementById('cameraStatus').innerHTML = '<span class="glyphicon glyphicon-exclamation-sign" id="cameraStatusIcon"></span>' + '<div id="cameraStatusText">No cameras found.</div>';
+            cameraStatusString = "none";
+            cameraStatusString = '<span class="glyphicon glyphicon-exclamation-sign" id="cameraStatusIcon"></span>' + '<div id="cameraStatusText">No cameras found.</div>';
         }
+
+        document.getElementById('cameraStatus').innerHTML = cameraStatusString;
+        document.getElementById('scanView').style.display = scanViewDisplay;
+
     }).catch(function (e) {
         console.error(e);
     });
