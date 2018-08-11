@@ -50,7 +50,7 @@
             cameraId = parseInt(getSelectedCamera(ddlCameras));
             initCamera(cameraId);
             //Show camera option dropdown if more than 2 cameras are detected
-            if (ddlCameras.length > 1){
+            if (ddlCameras[0].options.length > 1){
                 jqueryspf("#CameraOptions").show();
             }
         }
