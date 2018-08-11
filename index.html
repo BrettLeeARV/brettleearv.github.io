@@ -22,6 +22,10 @@
 <script type="text/javascript" src="./scripts/QrCodeScanner.js"></script>
 <script type="text/javascript">
 
+    var url = window.location.href.split('/');
+    var page = url[url.length - 1];
+    var processURL = window.location.href.replace(page, "Process.aspx");
+
     var jqueryspf = $.noConflict();
 
     //start scanner
@@ -32,7 +36,8 @@
         
     scanner.addListener('scan', function (content) {
             
-        // console.log(content);
+        alert(content);
+
         //convert QR to string - format: Location_Facility_App
         var contentArray = content.toString().split('_');
         //get the related service
@@ -73,10 +78,12 @@
             //e.g. cameras[0] = user self portrait camera
             if(cameras.length == 1){
                 console.log("front camera: " + cameras[0].name + " : " + cameras[0].id);
+                scanner.mirror = true;
                 scanner.start(cameras[0]);
             }
             else if (cameras.length > 1) {//if more than 1 device get the back camera, cameras[1] = rear or enviroment camera, 
                 console.log("Back camera: " + cameras[cameras.length - 1].name + " : " + cameras[cameras.length - 1].id);
+                scanner.mirror = false;
                 scanner.start(cameras[cameras.length - 1]);
             }            
             document.getElementById('cameraStatus').innerHTML = '';
