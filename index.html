@@ -34,7 +34,7 @@
     //HTML video component for web camera
     var videoComponent = jqueryspf("#scanView");
     //HTML select component for cameras change
-    var webcameraChanger = jqueryspf("#ddlCameras");    
+    var ddlCameras = jqueryspf("#ddlCameras");    
     
     //init options for scanner
     var options = initVideoObjectOptions("scanView");
@@ -45,9 +45,9 @@
 
     //Populate available cameras into dropdown and start rear most camera (selected will always be the last item in dropdown)
     initAvaliableCameras(
-        webcameraChanger,
+        ddlCameras,
         function () {
-            cameraId = parseInt(getSelectedCamera(webcameraChanger));
+            cameraId = parseInt(getSelectedCamera(ddlCameras));
             initCamera(cameraId);
         }
     );
@@ -56,19 +56,21 @@
     scanStart(function (content) {
         
         alert(content);
-
-        //convert QR to string - format: Location_Facility_App
         var contentArray = content.toString().split('_');
-        //get the related service
 
+        if (typeof contentArray !== 'undefined' && contentArray.length === 3){
+            processQRContentArray(contentArray);
+        }
+    });
+
+    function processQRContentArray(contentArray)
+    {
         var facilityProfileId = contentArray[0];
         var currentApp = contentArray[1];
         var keyword = contentArray[2];
 
-        //console.log(contentArray);
-
         //Check if BOOKING-APP key word is detected in qr (NOT THE MOST SECURE)
-        if (keyword == "BOOKING-APP") {
+        if (keyword === "BOOKING-APP") {
 
             //encrypt facility, location, date and time elements concatenate and send as parameter                
             var bookingInfo = "?facility=" + facilityProfileId + "&appservice=" + currentApp;
@@ -77,7 +79,7 @@
             //open booking process page with booking info from QR scan
             location.replace(processURL + bookingInfo);
         }
-    });
+    }
     
 </script>
 </html>
