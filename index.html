@@ -47,18 +47,16 @@
         if (keyword == "BOOKING-APP") {
                 
                 //stop scanning and process scanned content
-                scanner.stop().then(function (content) {
-        
-                    alert(content);
+                scanner.stop().then(function () {
 
                     //encrypt facility, location, date and time elements concatenate and send as parameter
                     //var bookingInfo = "?facility=" + facilityProfileId + "&bookingdatetime=" + fulldate + " " + timeRegistered + "&appservice=" + currentApp;
                     var bookingInfo = "?facility=" + facilityProfileId + "&appservice=" + currentApp;
-                    //console.log(processURL + bookingInfo);
+                    alert(processURL + bookingInfo);
+                    console.log(processURL + bookingInfo);
         
                     //open booking process page with booking info from QR scan
                     //location.replace(processURL + bookingInfo);
-
                 })
         
             }
@@ -78,9 +76,9 @@
                 scanner.start(cameras[0]);
             }
             else if (cameras.length > 1) {//if more than 1 device get the back camera, cameras[1] = rear or enviroment camera, 
-                console.log("Back camera: " + cameras[1].name + " : " + cameras[1].id);
-                scanner.start(cameras[1]);
-            }
+                console.log("Back camera: " + cameras[cameras.length - 1].name + " : " + cameras[cameras.length - 1].id);
+                scanner.start(cameras[cameras.length - 1]);
+            }            
             document.getElementById('cameraStatus').innerHTML = '';
         } else {
             console.error('No cameras found.');
