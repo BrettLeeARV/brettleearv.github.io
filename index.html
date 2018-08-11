@@ -23,35 +23,16 @@
 <script type="text/javascript">
 
     var jqueryspf = $.noConflict();
-  
-    //get relative path and create url to process page 
-    var url = window.location.href.split('/');
-    var page = url[url.length - 1];
-    var processURL = window.location.href.replace(page, "Process.aspx");
 
-    //HTML video component for web camera
-    var videoComponent = jqueryspf("#scanView");
-    //HTML select component for cameras change
-    var webcameraChanger = jqueryspf("#webcameraChanger");
-    var options = {};
-    //init options for scanner
-    options = initVideoObjectOptions("scanView");
-    var cameraId = 0;
-
-    initScanner(options);
-
-    initAvaliableCameras(
-        webcameraChanger,
-        function () {
-            cameraId = parseInt(getSelectedCamera(webcameraChanger));
-        }
-    );
-
-    initCamera(cameraId);
-
-    scanStart(function (content) {
-        alert(content);
-
+    //start scanner
+    let scanner = new Instascan.Scanner({
+            continuous: true, 
+            mirror: false,
+            video: document.getElementById('scanView') });
+        
+    scanner.addListener('scan', function (content) {
+            
+        // console.log(content);
         //convert QR to string - format: Location_Facility_App
         var contentArray = content.toString().split('_');
         //get the related service
@@ -59,20 +40,55 @@
         var facilityProfileId = contentArray[0];
         var currentApp = contentArray[1];
         var keyword = contentArray[2];
-
+        
         //console.log(contentArray);
 
         //check if BOOKING-APP key word is detected in qr
         if (keyword == "BOOKING-APP") {
+                
+                //stop scanning and process scanned content
+                scanner.stop().then(function (content) {
+        
+                    alert(content);
 
-            //encrypt facility, location, date and time elements concatenate and send as parameter                
-            var bookingInfo = "?facility=" + facilityProfileId + "&appservice=" + currentApp;
-            console.log(processURL + bookingInfo);
+                    //encrypt facility, location, date and time elements concatenate and send as parameter
+                    //var bookingInfo = "?facility=" + facilityProfileId + "&bookingdatetime=" + fulldate + " " + timeRegistered + "&appservice=" + currentApp;
+                    var bookingInfo = "?facility=" + facilityProfileId + "&appservice=" + currentApp;
+                    //console.log(processURL + bookingInfo);
+        
+                    //open booking process page with booking info from QR scan
+                    //location.replace(processURL + bookingInfo);
 
-            //open booking process page with booking info from QR scan
-            //location.href = (processURL + bookingInfo);
-        }
+                })
+        
+            }
     });
-   
+    
+    //start camera
+    Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+
+            //if any camera is detected show stream
+            document.getElementById('scanView').style.display = "block";
+
+            //check if there are more than 1 cameras 
+            //e.g. cameras[0] = user self portrait camera
+            if(cameras.length == 1){
+                console.log("front camera: " + cameras[0].name + " : " + cameras[0].id);
+                scanner.start(cameras[0]);
+            }
+            else if (cameras.length > 1) {//if more than 1 device get the back camera, cameras[1] = rear or enviroment camera, 
+                console.log("Back camera: " + cameras[1].name + " : " + cameras[1].id);
+                scanner.start(cameras[1]);
+            }
+            document.getElementById('cameraStatus').innerHTML = '';
+        } else {
+            console.error('No cameras found.');
+            document.getElementById('scanView').style.display = "none";
+            document.getElementById('cameraStatus').innerHTML = '<span class="glyphicon glyphicon-exclamation-sign" id="cameraStatusIcon"></span>' + '<div id="cameraStatusText">No cameras found.</div>';
+        }
+    }).catch(function (e) {
+        console.error(e);
+    });
 </script>
 </html>
