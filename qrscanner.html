@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Instascan Test</title>
+</head>
+<body>
+    <!--Camera Dropdown-->
+    <div id="CameraOptions" style="display: none;">
+        <label for="ddlCameras">Choose camera:</label>
+        <select id="ddlCameras" onchange="cameraChange(this);"></select>
+    </div>
+    <!--Scan video holder-->
+    <video id="scanView"></video>
+    <div id="cameraStatus"></div>
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- <script type="text/javascript" src="./scripts/adapter.min.js"></script> -->
+<script type="text/javascript" src="./scripts/instascan.min.js"></script>
+<script type="text/javascript" src="./scripts/QrCodeScanner.js"></script>
+<script type="text/javascript">
+
+    var url = window.location.href.split('/');
+    var page = url[url.length - 1];
+    var processURL = window.location.href.replace(page, "Process.aspx");
+
+    var jqueryspf = $.noConflict();
+
+    //HTML video component for web camera
+    var videoComponent = jqueryspf("#scanView");
+    //HTML select component for cameras change
+    var ddlCameras = jqueryspf("#ddlCameras");    
+    
+    //init options for scanner
+    var options = initVideoObjectOptions("scanView");
+    var cameraId = 0;
+
+    //Pass option and initialize Instascan
+    initScanner(options);
+
+    //Populate available cameras into dropdown and start rear most camera (selected will always be the last item in dropdown)
+    initAvaliableCameras(
+        ddlCameras,
+        function () {            
+            cameraId = parseInt(getSelectedCamera(ddlCameras));
+            initCamera(cameraId);
+            //Show camera option dropdown if more than 2 cameras are detected
+            if (ddlCameras[0].options.length > 1){
+                jqueryspf("#CameraOptions").show();
+            }
+        }
+    );
+
+    //Handle Scan result event
+    scanStart(function (content) {        
+        alert(content);
+        var contentArray = content.toString().split('_');
+        if (typeof contentArray !== 'undefined' && contentArray.length === 3){
+            processQRContentArray(contentArray);
+        }
+    });
+
+    function processQRContentArray(contentArray)
+    {
+        var facilityProfileId = contentArray[0];
+        var currentApp = contentArray[1];
+        var keyword = contentArray[2];
+
+        //Check if BOOKING-APP key word is detected in qr (NOT THE MOST SECURE)
+        if (keyword === "BOOKING-APP") {
+
+            //encrypt facility, location, date and time elements concatenate and send as parameter                
+            var bookingInfo = "?facility=" + facilityProfileId + "&appservice=" + currentApp;
+            alert(processURL + bookingInfo);
+
+            //open booking process page with booking info from QR scan
+            try{
+                location.href = processURL + bookingInfo;
+            }
+            catch(e)
+            {
+                alert(e.message);
+            }
+        }
+    }
+</script>
+</html>
