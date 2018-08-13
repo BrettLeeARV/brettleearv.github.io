@@ -75,11 +75,11 @@ function initCamera(i) {
         }
     });
 
-    // //If front camera selected, turn on mirror mode
-    // if (i === 0)
-    //     scanner.mirror = true;
-    // else
-    //     scanner.mirror = false;
+    //If front camera selected, turn on mirror mode
+    if (i === 0)
+        scanner.mirror = true;
+    else
+        scanner.mirror = false;
 }
 
 function scanStart(ondetect){
