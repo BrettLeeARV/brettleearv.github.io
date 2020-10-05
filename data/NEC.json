@@ -1,0 +1,13 @@
+[
+    {
+        "Name": "PC Engine",
+        "Release_JP": "04/21/1989",
+        "Release_NA": "07/31/1989",
+        "Release_EU": "09/28/1990",
+        "Description": "The Game Boy (GB) is an 8-bit handheld game console developed and manufactured by Nintendo. The first handheld in the Game Boy family, it was first released in Japan on April 21, 1989, then North America, three months later, and lastly in Europe, over a year later.",
+        "Wiki": "https://en.wikipedia.org/wiki/Game_Boy",
+        "Code": "PCE",
+        "Type": "Handheld",
+        "Manufacturer": "NEC"
+    }
+]

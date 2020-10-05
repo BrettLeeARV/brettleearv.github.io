@@ -1,0 +1,57 @@
+[
+    {
+        "Name": "Genesis/Megadrive",
+        "Release_JP": "11/22/1994",
+        "Release_NA": "05/11/1995",
+        "Release_EU": "07/08/1995",
+        "Description": "The Sega Genesis, known as the Mega Drive outside North America, is a 16-bit fourth-generation home video game console developed and sold by Sega.",
+        "Wiki": "https://en.wikipedia.org/wiki/Sega_Saturn",
+        "Code": "MD",
+        "Type": "Console",
+        "Manufacturer": "Sega"
+    },
+    {
+        "Name": "Game Gear",
+        "Release_JP": "11/22/1994",
+        "Release_NA": "05/11/1995",
+        "Release_EU": "07/08/1995",
+        "Description": "The Game Gear is an 8-bit fourth generation handheld game console released by Sega on October 6, 1990 in Japan, in April 1991 throughout North America and Europe, and during 1992 in Australia.",
+        "Wiki": "https://en.wikipedia.org/wiki/Sega_Saturn",
+        "Code": "GG",
+        "Type": "Handheld",
+        "Manufacturer": "Sega"
+    },
+    {
+        "Name": "Master System",
+        "Release_JP": "11/22/1994",
+        "Release_NA": "05/11/1995",
+        "Release_EU": "07/08/1995",
+        "Description": "The Sega Master System is a third-generation 8-bit home video game console manufactured by Sega.",
+        "Wiki": "https://en.wikipedia.org/wiki/Sega_Saturn",
+        "Code": "MS",
+        "Type": "Console",
+        "Manufacturer": "Sega"
+    },
+    {
+        "Name": "Saturn",
+        "Release_JP": "11/22/1994",
+        "Release_NA": "05/11/1995",
+        "Release_EU": "07/08/1995",
+        "Description": "The Sega Saturn is a home video game console developed by Sega and released on November 22, 1994 in Japan, May 11, 1995 in North America, and July 8, 1995 in Europe.",
+        "Wiki": "https://en.wikipedia.org/wiki/Sega_Saturn",
+        "Code": "SS",
+        "Type": "Console",
+        "Manufacturer": "Sega"
+    },
+    {
+        "Name": "Dreamcast",
+        "Release_JP": "11/22/1994",
+        "Release_NA": "05/11/1995",
+        "Release_EU": "07/08/1995",
+        "Description": "The Dreamcast is a home video game console released by Sega on November 27, 1998 in Japan, September 9, 1999 in North America, and October 14, 1999 in Europe.",
+        "Wiki": "https://en.wikipedia.org/wiki/Sega_Saturn",
+        "Code": "DC",
+        "Type": "Console",
+        "Manufacturer": "Sega"
+    }
+]

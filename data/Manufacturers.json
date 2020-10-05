@@ -1,0 +1,32 @@
+[
+    {
+        "Name": "Nintendo",
+        "Code": "Nintendo",
+        "Description": "Nintendo",
+        "DataFile": "Nintendo.json"
+    },
+    {
+        "Name": "Sega",
+        "Code": "Sega",
+        "Description": "Sega",
+        "DataFile": "Sega.json"
+    },
+    {
+        "Name": "Atari",
+        "Code": "Atari",
+        "Description": "Atari",
+        "DataFile": "Atari.json"
+    },
+    {
+        "Name": "Sony",
+        "Code": "Sony",
+        "Description": "Sony",
+        "DataFile": "Sony.json"
+    },
+    {
+        "Name": "NEC",
+        "Code": "NEC",
+        "Description": "NEC",
+        "DataFile": "NEC.json"
+    }
+]
