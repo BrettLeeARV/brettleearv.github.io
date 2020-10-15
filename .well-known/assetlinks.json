@@ -1,5 +1,5 @@
 [{
       "relation": ["delegate_permission/common.handle_all_urls"],
       "target" : { "namespace": "android_app", "package_name": "com.pinecodetech.www.twa",
-                   "sha256_cert_fingerprints": ["57:43:03:FB:55:6F:8D:78:72:69:C3:C2:16:19:10:16:0E:A7:90:00:F1:5F:9E:25:FB:21:16:21:A9:C0:E9:E2"] }
+                   "sha256_cert_fingerprints": ["B9:74:7F:C2:D6:83:88:7B:71:AF:5B:4C:D6:27:78:15:D5:92:90:9E:86:E8:7D:08:6D:1E:7F:12:4F:6F:60:30"] }
     }]
