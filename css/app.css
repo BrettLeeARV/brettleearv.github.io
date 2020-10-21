@@ -9,11 +9,40 @@ div {
 user-select: none; /* Standard syntax */
 }
 
+.filter-bar {
+  display: flex;
+}
+
+.filter-container {
+  display: inherit;
+  align-items: center;
+}
+
+.filter-cancel {
+  padding: 0 5px 0 5px;
+}
+
+.filter-enabled {
+  background-color: gold;
+}
+
+.mdl-menu__item.selected {
+  background-color: gainsboro;
+}
+
 .bottom-right-aligned {
   position: absolute;
   right: 0;
   bottom: 0;
   padding: 0 10px;
+}
+
+.mdl-dialog__content > ul {
+  padding: 0 0 0 0;
+}
+
+.mdl-dialog__content > ul > li {
+  padding: 0 0 5px 0;
 }
 
 .menu-drawer-icons {
@@ -217,8 +246,7 @@ top: 0.5rem;
 }
 
 .portfolio-navigation-row  .mdl-navigation {
-  text-align: center;
-  max-width: 900px;
+  text-align: center;  
   width: 100%;
 }
 
