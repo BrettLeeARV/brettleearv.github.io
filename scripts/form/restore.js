@@ -22,17 +22,6 @@ class RestoreForm {
         });
     }
 
-    // async #processDataInsertion(jsonData) {
-    //     jsonData.forEach((row) => {                    
-    //         row.Created = new Date(row.Created);
-    //         await this._dbContext.Insert('Collections', row)
-    //         .catch((e) => {                
-    //             return Promise.reject(e);
-    //         })
-    //     });
-    //     return Promise.resolve(jsonData.length);
-    // }
-
     get btnFileBrowse() {
         return this._btnFileBrowse;
     }

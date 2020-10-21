@@ -1,57 +1,27 @@
 [
     {
-        "Name": "2600",
-        "Release_JP": "",
-        "Release_NA": "",
-        "Release_EU": "",
-        "Description": "The Atari 2600, originally branded as the Atari Video Computer System (Atari VCS) until November 1982, is a home video game console developed and produced by Atari, Inc.",
-        "Wiki": "https://en.wikipedia.org/wiki/Atari_2600",
+        "Name": "2600",       
         "Code": "2600",
-        "Type": "Console",
-        "Manufacturer": "Atari"
+        "Type": "Console"
     },
     {
-        "Name": "5200",
-        "Release_JP": "",
-        "Release_NA": "",
-        "Release_EU": "",
-        "Description": "The Atari 2600, originally branded as the Atari Video Computer System (Atari VCS) until November 1982, is a home video game console developed and produced by Atari, Inc.",
-        "Wiki": "https://en.wikipedia.org/wiki/Atari_2600",
+        "Name": "5200",       
         "Code": "5200",
-        "Type": "Console",
-        "Manufacturer": "Atari"
+        "Type": "Console"
     },
     {
-        "Name": "7800",
-        "Release_JP": "",
-        "Release_NA": "",
-        "Release_EU": "",
-        "Description": "The Atari 2600, originally branded as the Atari Video Computer System (Atari VCS) until November 1982, is a home video game console developed and produced by Atari, Inc.",
-        "Wiki": "https://en.wikipedia.org/wiki/Atari_2600",
+        "Name": "7800",      
         "Code": "7800",
-        "Type": "Console",
-        "Manufacturer": "Atari"
+        "Type": "Console"
     },
     {
-        "Name": "Lynx",
-        "Release_JP": "",
-        "Release_NA": "",
-        "Release_EU": "",
-        "Description": "The Atari 2600, originally branded as the Atari Video Computer System (Atari VCS) until November 1982, is a home video game console developed and produced by Atari, Inc.",
-        "Wiki": "https://en.wikipedia.org/wiki/Atari_2600",
+        "Name": "Lynx",       
         "Code": "Lynx",
-        "Type": "Handheld",
-        "Manufacturer": "Atari"
+        "Type": "Handheld"
     },
     {
-        "Name": "Jaguar",
-        "Release_JP": "",
-        "Release_NA": "",
-        "Release_EU": "",
-        "Description": "The Atari 2600, originally branded as the Atari Video Computer System (Atari VCS) until November 1982, is a home video game console developed and produced by Atari, Inc.",
-        "Wiki": "https://en.wikipedia.org/wiki/Atari_2600",
-        "Code": "Jaguar",
-        "Type": "Console",
-        "Manufacturer": "Atari"
+        "Name": "Jaguar",       
+        "Code": "JAG",
+        "Type": "Console"
     }
 ]

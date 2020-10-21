@@ -1,6 +1,6 @@
 [
     {
-        "Name": "Gameboy (GB)",       
+        "Name": "Gameboy",       
         "Code": "DMG",
         "Type": "Handheld",
         "Manufacturer": "Nintendo"
@@ -19,13 +19,19 @@
     },
     {
         "Name": "NES",
-        "Code": "NES",
+        "Code": "FC",
         "Type": "Console",
         "Manufacturer": "Nintendo"
     },
     {
         "Name": "SNES",
         "Code": "SFC",
+        "Type": "Console",
+        "Manufacturer": "Nintendo"
+    },
+    {
+        "Name": "Nintendo 64",
+        "Code": "N64",
         "Type": "Console",
         "Manufacturer": "Nintendo"
     },
@@ -49,7 +55,7 @@
     },
     {
         "Name": "DS",
-        "Code": "DS",
+        "Code": "NDS",
         "Type": "Handheld",
         "Manufacturer": "Nintendo"
     },

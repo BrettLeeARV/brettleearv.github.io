@@ -192,7 +192,7 @@ class DbContext {
                 queryBuilder.where(table[filterColumnName].eq(filterColumnValueExp));
             }
             else {
-                queryBuilder.where(table[filterColumnName].match(filterColumnValueExp));
+                queryBuilder.where(table[filterColumnName].match(new RegExp(filterColumnValueExp, 'i')));
             }
 
             return queryBuilder.exec();            

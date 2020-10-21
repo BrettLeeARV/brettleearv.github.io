@@ -8,6 +8,10 @@ class Camera {
         }
     }
 
+    set LoadingElement(target) {
+        this._loadingElement = target;
+    }
+
     set CanvasElement(target) {
         this._canvasElement = target;
     }
@@ -30,10 +34,6 @@ class Camera {
 
     set CameraCancelElement(target) {
         this._cameraCancelElement = target;
-        // this._cameraCancelElement.addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     this.Start();
-        // })
     }
 
     set CameraSnapElement(target) {
@@ -92,9 +92,11 @@ class Camera {
     }
 
     Start() {
+        this._loadingElement.show();
         this._webcam.start()
         .then(result =>{
             console.log("webcam started");
+            this._loadingElement.hide();
             this._webcamElement.show();
             this._canvasElement.hide();
             this.#hideOkCancel();
