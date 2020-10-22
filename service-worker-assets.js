@@ -5,7 +5,7 @@
       "url": "audio\/snap.wav"
     },
     {
-      "hash": "sha256-HYau6+iiREHDl6tK3pzUm1ejQftylgLZVvlLsLZ1aQY=",
+      "hash": "sha256-NrzzQGI2qSUN6wnRfbKN\/VveEQLHmOefB77kT3D2amo=",
       "url": "css\/app.css"
     },
     {
@@ -533,5 +533,5 @@
       "url": "_framework\/blazor.boot.json"
     }
   ],
-  "version": "VFvc0Mmx"
+  "version": "taX141Sh"
 };
